@@ -1,0 +1,29 @@
+{
+  "name": "checkmate",
+  "description": "Dashboard",
+  "main": "main.js",
+  "authors": [
+    "Fabian Rios"
+  ],
+  "license": "BSD3",
+  "keywords": [
+    "dashboard",
+    "purescript",
+    "electron",
+    "purescript-halogen"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/test",
+    "client/output"
+  ],
+  "dependencies": {
+    "purescript-halogen": "^0.8.0",
+    "purescript-affjax": "^0.13.2",
+    "purescript-console": "^0.1.1",
+    "purescript-foreign-generic": "^0.3.0"
+  }
+}
