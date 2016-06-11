@@ -49,7 +49,6 @@ initialState =
 
 data Query a
   = Initialize a
-  | Finalize a
 
 type AppEffects eff = HalogenEffects (ajax :: AJAX, console :: CONSOLE | eff)
 

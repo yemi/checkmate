@@ -41,15 +41,6 @@ var Initialize = (function () {
     };
     return Initialize;
 })();
-var Finalize = (function () {
-    function Finalize(value0) {
-        this.value0 = value0;
-    };
-    Finalize.create = function (value0) {
-        return new Finalize(value0);
-    };
-    return Finalize;
-})();
 var weatherGeneric = new Data_Generic.Generic(function (v) {
     if (v instanceof Data_Generic.SProd && (v.value0 === "Main.Weather" && v.value1.length === 1)) {
         return Prelude.apply(Data_Maybe.applyMaybe)(new Data_Maybe.Just(Weather))((function (r) {
@@ -133,41 +124,38 @@ var ui = (function () {
             if (!st.busy) {
                 return "";
             };
-            throw new Error("Failed pattern match at Main line 69, column 21 - line 69, column 57: " + [ st.busy.constructor.name ]);
+            throw new Error("Failed pattern match at Main line 68, column 21 - line 68, column 57: " + [ st.busy.constructor.name ]);
         })()) ]) ])(Prelude.flip(Data_Foldable.foldMap(Data_Foldable.foldableMaybe)(Data_Monoid.monoidArray))(st.weather)(function (v) {
             return [ Halogen_HTML_Elements.div_([ Halogen_HTML_Elements.h2_([ Halogen_HTML.text("Temperature") ]), Halogen_HTML_Elements.h2_([ Halogen_HTML_Elements.code_([ Halogen_HTML.text(Prelude.show(Prelude.showNumber)(v.temperature)) ]) ]), Halogen_HTML_Elements.h2_([ Halogen_HTML.text("Conditions") ]), Halogen_HTML_Elements.h2_([ Halogen_HTML_Elements.code_([ Halogen_HTML.text(v.conditions) ]) ]) ]) ];
         })));
     };
     var $$eval = function (v) {
-        if (v instanceof Initialize) {
-            return Prelude.bind(Control_Monad_Free.freeBind)(Halogen_Query.modify(function (v1) {
-                var $27 = {};
-                for (var $28 in v1) {
-                    if (v1.hasOwnProperty($28)) {
-                        $27[$28] = v1[$28];
-                    };
+        return Prelude.bind(Control_Monad_Free.freeBind)(Halogen_Query.modify(function (v1) {
+            var $27 = {};
+            for (var $28 in v1) {
+                if (v1.hasOwnProperty($28)) {
+                    $27[$28] = v1[$28];
                 };
-                $27.busy = true;
-                return $27;
-            }))(function () {
-                return Prelude.bind(Control_Monad_Free.freeBind)(Control_Monad_Aff_Free.fromAff(Control_Monad_Aff_Free.affableFree(Halogen_Query_HalogenF.affableHalogenF(Control_Monad_Aff_Free.affableAff)))(fetchWeather))(function (v1) {
-                    return Prelude.bind(Control_Monad_Free.freeBind)(Halogen_Query.modify(function (v2) {
-                        var $30 = {};
-                        for (var $31 in v2) {
-                            if (v2.hasOwnProperty($31)) {
-                                $30[$31] = v2[$31];
-                            };
+            };
+            $27.busy = true;
+            return $27;
+        }))(function () {
+            return Prelude.bind(Control_Monad_Free.freeBind)(Control_Monad_Aff_Free.fromAff(Control_Monad_Aff_Free.affableFree(Halogen_Query_HalogenF.affableHalogenF(Control_Monad_Aff_Free.affableAff)))(fetchWeather))(function (v1) {
+                return Prelude.bind(Control_Monad_Free.freeBind)(Halogen_Query.modify(function (v2) {
+                    var $30 = {};
+                    for (var $31 in v2) {
+                        if (v2.hasOwnProperty($31)) {
+                            $30[$31] = v2[$31];
                         };
-                        $30.busy = false;
-                        $30.weather = v1;
-                        return $30;
-                    }))(function () {
-                        return Prelude.pure(Control_Monad_Free.freeApplicative)(v.value0);
-                    });
+                    };
+                    $30.busy = false;
+                    $30.weather = v1;
+                    return $30;
+                }))(function () {
+                    return Prelude.pure(Control_Monad_Free.freeApplicative)(v.value0);
                 });
             });
-        };
-        throw new Error("Failed pattern match at Main line 81, column 3 - line 87, column 1: " + [ v.constructor.name ]);
+        });
     };
     return Halogen_Component.lifecycleComponent({
         render: render, 
@@ -183,7 +171,6 @@ var main = Halogen_Util.runHalogenAff(Prelude.bind(Control_Monad_Aff.bindAff)(Ha
 }));
 module.exports = {
     Initialize: Initialize, 
-    Finalize: Finalize, 
     Weather: Weather, 
     setInterval: setInterval, 
     main: main, 
