@@ -15,17 +15,11 @@ const createWindow = () => {
   })
 }
 
-const startServer = () => {
-  server = child_process.spawn('./bin/checkmate-server')
-}
-
 app.on('ready', () => {
   createWindow()
-  startServer()
 })
 
 app.on('will-quit', () => {
-  server.kill()
 })
 
 app.on('window-all-closed', () => {

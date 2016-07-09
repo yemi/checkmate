@@ -23,11 +23,8 @@
     "url": "https://github.com/yemi/checkmate/issues"
   },
   "homepage": "https://github.com/yemi/checkmate#readme",
-  "devDependencies": {
-    "electron-prebuilt": "^1.1.1",
-    "pulp": "^8.2.1"
-  },
   "dependencies": {
+    "electron-prebuilt": "^1.1.1",
     "virtual-dom": "^2.1.1",
     "xhr2": "^0.1.3"
   }
