@@ -2,5 +2,4 @@
 bin
 bower_components
 node_modules
-output
 *.tix
